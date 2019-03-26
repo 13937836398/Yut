@@ -1,0 +1,26 @@
+var live800_SpeCode="";
+var live800_SpeCodeLeaveUrl="";
+var live800_companyID="8973";
+var enterurl="http://www.yutong.com/?utm_source=Baidu";
+var isNewChatBoxForMonitor=true;
+var live800_baseUrl="ytkf.yutong.com:8880";
+var live800_baseHtmlUrl="ytkf.yutong.com:8880";
+var live800_baseWebApp="/live800";
+var live800_baseChatHtmlDir="/chatClient";
+var live800_defined_params="k=1";
+toolbar_live800_configID="2";
+var isFunctionCode="true";
+var live800_page_key="P3GSb9NlshUtU8y3946q";
+live800_status="1";
+live800_Language="zh";
+monitor_live800_auto_chatting="0";
+var monitorFunction_isOpen=true;
+var monitor_live800_configContent="live800_invite_auto=0&live800_invite_delay=3&live800_invite_display=300&live800_invite_top=2&auto_initiated_chat=0&auto_connect=0&delay_initiated_time=10&custom_configId=11&live800_invite_title=%E5%9C%A8%E7%BA%BF%E5%92%A8%E8%AF%A2";
+live800_custom_config="interface_type=0&background=http://http://ytkf.yutong.com:8880/live800/yutongStyle/bg.gif&buttonBackground=http://ytkf.yutong.com:8880/live800/yutongStyle/btn1.png&link=http://ytkf.yutong.com:8880/live800/yutongStyle/invite.css";
+var live800_inviteContent="%E5%AE%A2%E6%88%B7%E6%82%A8%E5%A5%BD%EF%BC%8C%E8%B4%AD%E4%B9%B0%E5%AE%A2%E8%BD%A6%E3%80%81%E6%A0%A1%E8%BD%A6%E7%AD%89%E8%AF%B7%E7%9B%B4%E6%8E%A5%E7%82%B9%E5%87%BB%E2%80%9C%E7%8E%B0%E5%9C%A8%E5%92%A8%E8%AF%A2%E2%80%9D%EF%BC%8C%E5%9C%A8%E7%BA%BF%E5%AE%A2%E6%9C%8D%E5%B0%86%E4%BC%9A%E4%B8%BA%E6%82%A8%E6%9C%8D%E5%8A%A1%EF%BC%81";
+var live800_visitorAddr="%E6%AC%A2%E8%BF%8E%E6%82%A8%EF%BC%8C%E6%9D%A5%E8%87%AA%E6%B2%B3%E5%8D%97%E7%9C%81%E7%9A%84%E6%9C%8B%E5%8F%8B";
+var invite_accept="%E5%BC%80%E5%A7%8B%E4%BA%A4%E8%B0%88";
+var invite_cancel="%E5%BE%85%E4%BC%9A%E5%86%8D%E8%AF%B4";
+var live800_chat_content="live800_chat_style=inner-blue&company_logo=http%3A%2F%2Fytkf.yutong.com%3A8880%2Flive800%2FchatClient%2Frefactor%2Fstyle%2Fyutong.png&company_logoLink=http%3A%2F%2Fwww.yutong.com&chat_position=right&live800_chattip=%26%2328857%3B%26%2320987%3B%26%2325105%3B%26%2365292%3B%26%2322238%3B%26%2331572%3B%26%2324744%3B%26%2330340%3B%26%2338382%3B%26%2339064%3B";
+
+document.write("<scr"+"ipt language=\"javascript\" src=\"http://ytkf.yutong.com:8880/live800/chatClient/refactor/scripts/live800_innerChat_main.js?t=1547478327170\" charset=\"UTF-8\"></scr"+"ipt>");

@@ -1,0 +1,293 @@
+// JavaScript Document
+$(function (){
+	
+	//搜索框
+	yz($("#m_box"));
+	
+	//定制车型
+	dzModel();
+	
+	//下拉菜单
+	
+	$("#nav").find("li").hover(function (){
+		
+		$(this).addClass("active").siblings("li").removeClass("active");
+		$(this).find(".menu").show().end().siblings("li").find(".menu").hide();
+	}, function (){
+		
+		$(this).removeClass("active");
+		$(this).find(".menu").hide();
+	});
+	
+	menuHover($(".menu2"));
+	menuHover($(".menu3"));
+	menuHover($(".menu5"));
+	menuHover($(".menu6"));
+		
+	function menuHover(obj){
+		
+		obj.find("dd").mouseenter(function (){
+			var iEq = obj.find("dd").index(this);
+			
+			$(this).addClass("active").siblings().removeClass("active").parents(".menu2_left").siblings(".menu2_right").eq(iEq).show().siblings(".menu2_right").hide();
+		});
+	}
+	
+	//语言选择
+	
+	$(".choose_lan").hover(function (){
+		
+		$(this).find("div").show();
+	}, function (){
+		
+		$(this).find("div").hide();
+	});
+	
+	//旗下企业
+	
+	$(".company").hover(function (){
+		
+		$(".com_list").stop(true, true).slideDown();
+	},function (){
+		
+		$(".com_list").stop(true, true).slideUp();
+	});
+	
+	//在线订购
+	
+	if($(".sidebar").length>0){
+		
+		sidebar();
+		$(window).scroll(function (){
+			
+			sidebar();
+		});
+		$(".s_b_close a").click(function (){
+			
+			$(".sidebar").hide();
+		});
+		$("#s_b_3").hover(function (){
+			
+			$(this).addClass("active").children(".sidebarfx").stop(true).animate({"width": "195px"});
+		},function (){
+			
+			$(this).removeClass("active").children(".sidebarfx").stop(true).animate({"width": 0});
+		});
+	}
+	
+	//新车上市
+	
+	if($(".newcarlist").length>0){
+		
+		newCar();
+	}
+});
+
+function dzModel(){
+	
+	var sc_timer=null;
+	var iTop=0;
+	var $dl=$(".m_wrap").find("dl");
+	$(".scr_t").hover(function (){
+		
+		sc_timer=setInterval(function (){
+			
+			iTop=$dl.position().top;
+			iTop>=0?iTop=0:iTop+=1;
+			$dl.css("top", iTop);
+		},30);
+	}, function (){
+		
+		clearInterval(sc_timer);
+	});
+	$(".scr_b").hover(function (){
+											
+		sc_timer=setInterval(function (){
+			
+			iTop=$dl.position().top;
+			iTop<=$(".m_wrap").height()-$dl.height()?iTop=$(".m_wrap").height()-$dl.height():iTop-=1;
+			$dl.css("top", iTop);
+		},30);
+	}, function (){
+		
+		clearInterval(sc_timer);
+	});
+}
+
+function yz(obj){
+	
+	obj.focus(function (){
+		
+		obj.siblings("label").hide();
+	});
+	obj.blur(function (){
+		
+		if($(this).val()==""){
+			
+			obj.siblings("label").show();
+		}
+	});
+}
+
+function newCar(){
+	
+	var timer = null;
+	var iNow = 0;
+	var aLi = $(".newcarlist").find("li");
+	
+	timer = setInterval(function (){
+		
+		iNow==aLi.length-1 ? iNow = 0 : iNow++;
+		aLi.eq(iNow).show().siblings("li").hide();
+	}, 2000);
+}
+
+function sidebar(){
+	
+	var iH = $("body").innerHeight();
+	if($(".sidebar").offset().top+$(".sidebar").innerHeight()>iH){
+		
+		$(".sidebar").css("top", iH-$(".sidebar").innerHeight()+"px");
+	}
+	$(".sidebar").stop(true).animate({"top": $(document).scrollTop()+100+"px"});
+}
+
+function tabFade(obj, btn){
+	
+	var timer = null;
+	var iNow = 0;
+	var aTab = obj.find("li");
+	var aBtn = btn.find("span");
+	var iInterval = 6000;
+	
+	obj.find("li:gt(0)").hide();
+	timer = setTimeout(fnHot, iInterval);
+	function fnHot(){
+		
+		iNow++;
+		if(iNow==aTab.length){
+			
+			iNow = 0;
+		}
+		aBtn.eq(iNow).addClass("active").siblings().removeClass("active");
+		aTab.eq(iNow).css({"display": "none", "z-index": 2}).fadeIn(function (){
+			
+			$(this).css({"z-index": 1}).siblings("li").hide();
+			timer = setTimeout(fnHot, iInterval);
+		});
+	}
+	aBtn.click(function (){
+		
+		var i = aBtn.index(this);
+		
+		if(i==iNow)return;
+		clearTimeout(timer);
+		$(this).addClass("active").siblings().removeClass("active");
+		aTab.stop(true, true).eq(i).css({"display": "none", "z-index": 2}).fadeIn(function (){
+			
+			$(this).css({"z-index": 1}).siblings("li").hide();
+			iNow = i;
+			timer = setTimeout(fnHot, iInterval);
+		});
+	});
+}
+
+
+
+
+
+
+
+
+	
+
+$(document).ready(function(){
+	 if(!window.XMLHttpRequest&&document.all){
+        document.getElementById("pop1").style.marginLeft='-250px';
+        document.getElementById("pop1").style.marginTop='-200px';
+        document.getElementById("pop2").style.marginLeft='-250px';
+        document.getElementById("pop2").style.marginTop='-200px';
+    }
+initLive800KF();
+    
+		   
+    $('.freefone1').click(function(){
+		var ph=document.body.clientHeight;
+		document.getElementById("bod1").style.height=ph+'px';
+        $('.body').show();
+        $('.popup1').show();
+    });
+    $('.close').click(function(){
+        $('.body').hide();
+        $('.popup1').hide();
+    });
+    $('.refer').click(function(){
+        saveFreePhoneTop();
+    });
+    $('.tj').click(function(){
+        $('.body').hide();
+        $('.popup2').hide();
+    });
+
+	$('.detail_para img').click(function(){
+		var ph1=document.body.clientHeight;
+		document.getElementById("body2_img").style.height=ph1+'px';
+                  var pw=document.body.clientWidth;
+	         document.getElementById("body2_img").style.width=pw+'px';
+
+		var img_src=$(this).attr("src");
+		$('.popup_img img').attr('src',img_src);
+		$('.body2').show();
+		$('.popup_img').show();
+	});
+	$('.close_img').click(function(){
+		$('.body2').hide();
+		$('.popup_img').hide();
+	});
+
+
+});
+
+
+	var mobileTop = /^(((13[0-9]{1})|(15[0-9]{1})|(17[0-9]{1})|(18[0-9]{1}))+\d{8})$/;  
+	function saveFreePhoneTop(){
+		$('.reminder').hide();
+		var freePhone = $('#freePhoneTopInput').val(); 
+		
+		if(mobileTop.test(freePhone)){
+			
+			$('#freePhoneTop').val(freePhone);
+			$('#freePhoneTopUrl').val(window.location.href);
+			$('#freePhoneTopTitle').val(document.title);
+			var url = '/thtml/mutualInfo/saveMutualInfo.do';
+			jQuery.post(url,$('#freePhoneTopForm').serialize(),function(data){
+				
+				if(!data.done){
+					$('.reminder').html('提交失败，请稍后再试!');
+					$('.reminder').show();
+					return ;
+				}
+				else{					
+					$('.popup1').hide();
+					$('.popup2').show();
+					setTimeout('clse()',2000);
+				   document.getElementById('freePhoneTopForm').reset(); 
+				    $('#freePhoneTopInput').val('请输入您的手机号');  
+					return ;
+				}
+			},"json");
+		}
+		else{ 
+			$('.reminder').show();
+		}
+		 //if((tel.test(val))||(mobile.test(val))||(tel2.test(val))){
+        	  
+         // }
+	
+	}
+
+
+    function clse(){
+        $(".body").hide();
+        $(".popup2").hide();
+    }

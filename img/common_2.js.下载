@@ -1,0 +1,79 @@
+//搜索框
+	yz($("#m_box"));
+	
+	//定制车型
+	dzModel();
+	
+	//下拉菜单
+	
+	$("#nav").find("li").hover(function (){
+		
+		$(this).addClass("active").siblings("li").removeClass("active");
+		$(this).find(".menu").show().end().siblings("li").find(".menu").hide();
+	}, function (){
+		
+		$(this).removeClass("active");
+		$(this).find(".menu").hide();
+	});
+	
+	menuHover($(".menu2"));
+	menuHover($(".menu3"));
+	menuHover($(".menu5"));
+		
+	function menuHover(obj){
+		
+		obj.find("dd").mouseenter(function (){
+			var iEq = obj.find("dd").index(this);
+			
+			$(this).addClass("active").siblings().removeClass("active").parents(".menu2_left").siblings(".menu2_right").eq(iEq).show().siblings(".menu2_right").hide();
+		});
+	}
+	
+	//语言选择
+	
+	$(".choose_lan").hover(function (){
+		
+		$(this).find("div").show();
+	}, function (){
+		
+		$(this).find("div").hide();
+	});
+	
+	//旗下企业
+	
+	$(".company").hover(function (){
+		
+		$(".com_list").stop(true, true).slideDown();
+	},function (){
+		
+		$(".com_list").stop(true, true).slideUp();
+	});
+	
+	//在线订购
+	
+	if($(".sidebar").length>0){
+		
+		sidebar();
+		$(window).scroll(function (){
+			
+			sidebar();
+		});
+		$(".s_b_close a").click(function (){
+			
+			$(".sidebar").hide();
+		});
+		$("#s_b_3").hover(function (){
+			
+			$(this).addClass("active").children(".sidebarfx").stop(true).animate({"width": "195px"});
+		},function (){
+			
+			$(this).removeClass("active").children(".sidebarfx").stop(true).animate({"width": 0});
+		});
+	}
+	
+	//新车上市
+	
+	if($(".newcarlist").length>0){
+		
+		newCar();
+	}

@@ -1,0 +1,141 @@
+// JavaScript Document
+$(function (){
+	
+	//Banner
+	Banner();
+	
+	//图片滚动
+	picScroll();
+	
+	tab($(".yt_member"));
+	tab($(".weibo"));
+	
+	yz($("#user"));
+	yz($("#pass"));
+});
+
+function Banner(){
+	
+		var iWidth=$(".bigpic").innerWidth();	//图片宽度
+		var Btimer=null;		
+		var iNow=0;
+		var iInterval=6000;
+		
+		$(".bannerbg").hover(function (){
+			
+			clearInterval(Btimer);
+		}, function (){
+			
+			Btimer=setInterval(fnBanner, iInterval);
+		});
+		$(".bigpic a:first").nextAll().css("left", iWidth);
+		$(".bigpic a").css("position", "absolute");
+		
+		$(".smallpic").find("a").hover(function (){
+			
+			$(this).addClass("active").find("img").show().end().stop(true, true).animate({"height": "43px"}, 200);
+		}, function (){
+			
+			$(this).removeClass("active").find("img").hide().end().stop(true, true).animate({"height": "0"}, 200);
+		});
+		$(".smallpic").find("a").click(function (){
+			
+			var $index=$(".smallpic").find("a").index($(this));
+			var obj=$(".bigpic a").eq($index);
+			
+			if($index>iNow){
+				
+				obj.css({"left": iWidth}).css({"z-index": "0"});
+				$(".bigpic a").eq(iNow).animate({"left": -iWidth}, 600);
+				obj.animate({"left": 0}, 500);
+			}
+			else if($index<iNow){
+				
+				obj.css({"left": -iWidth});
+				$(".bigpic a").eq(iNow).css({"z-index": "-1"}).animate({"left": iWidth}, 600);
+				obj.animate({"left": 0}, 500, function (){$(".bigpic a").eq(iNow).css({"z-index": "0"})});
+			}
+			else{
+				
+				return;
+			}
+			iNow=$index;
+		});
+		Btimer=setInterval(fnBanner, iInterval);
+		function fnBanner(){
+			
+			if(iNow==$(".bigpic a").length-1){
+				
+				iNow=-1;
+			}
+			$(".bigpic a").eq(iNow+1).css({"left": iWidth});
+			iNow++;
+			if(iNow==0){
+				
+				$(".bigpic a").eq($(".bigpic a").length-1).animate({"left": -iWidth}, 600);
+			}
+			else{
+				
+				$(".bigpic a").eq(iNow-1).animate({"left": -iWidth}, 600);
+			}
+			$(".bigpic a").eq(iNow).css({"z-index": "0"}).siblings().css({"z-index": "-1"}).end().animate({"left": 0}, 500);
+		}
+}
+								
+function picScroll(){
+	
+	var $oUl=$(".yts_wrap").find("ul");
+	var $aLi=$oUl.find("li");
+	var $iNow=0;
+	$($oUl).width($($aLi).outerWidth(true)*$($aLi).length);
+	$(".yts_lbtn").click(function(){
+		$iNow++;
+		if($iNow > $aLi.length - 3){
+			$iNow = 0;
+		}
+			$($oUl).animate({
+				"left"	: $aLi.outerWidth(true)* -$iNow
+			})
+	});
+	$(".yts_rbtn").click(function(){
+		$iNow--;
+		
+		if($iNow < 0){
+			$iNow = $aLi.length - 3
+		}
+		$($oUl).animate({
+				"left"	: $aLi.outerWidth(true)* -$iNow
+			})
+	});
+	
+	function changeRexhibit(){
+		$iNow++;
+		if($iNow > $aLi.length - 3){
+			$iNow = 0;
+		}
+			$($oUl).animate({
+				"left"	: $aLi.outerWidth(true)* -$iNow
+			})
+	}
+	var timeRexhibit = null;
+	timeRexhibit = setInterval(changeRexhibit,3000)
+	
+	var wrap = $('.yt_service_mid');
+	wrap.hover(function(){
+		
+		clearInterval(timeRexhibit);
+	},function(){
+		timeRexhibit = setInterval(changeRexhibit,3000)
+	});
+}
+
+function tab(obj){
+	
+	obj.find(".tab_nav").find("h4").mouseover(function (){
+		
+		var $index = obj.find(".tab_nav").find("h4").index($(this));
+		
+		$(this).addClass("active").siblings().removeClass("active");
+		obj.find(".tab_con").eq($index).show().siblings(".tab_con").hide();
+	});
+}

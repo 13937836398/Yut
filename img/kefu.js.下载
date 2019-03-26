@@ -1,0 +1,16 @@
+/*
+window.onload=function(){
+    function initLive800KF(){
+        try{
+            var Live800KF_url='http://ytkf.yutong.com:8880/live800/chatClient/chatbox.jsp?companyID=8973&configID=7&enterurl=http://www.yutong.com/&pagereferrer=&k=1';
+            Live800KF_url=Live800KF_url.replace("[enterurl]",document.URL);
+            Live800KF_url=Live800KF_url.replace("[pagereferrer]",document.referrer);
+            //alert(Live800KF_url);
+            $("[href^='http://ytkf.yutong.com:8880/live800/chatClient/chatbox.jsp']").attr('href',Live800KF_url);
+            //$('.live800KF').attr('href',Live800KF_url);
+        }catch(e){}
+
+    }//end of function
+    initLive800KF();
+};
+*/
